@@ -1,0 +1,5 @@
+mkfs.tux3
+*.o
+*.a
+*.mod
+.*.cmd

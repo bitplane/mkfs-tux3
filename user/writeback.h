@@ -1,0 +1,30 @@
+#ifndef TUX3_WRITEBACK_H
+#define TUX3_WRITEBACK_H
+
+#define I_DIRTY_SYNC		(1 << 0)
+#define I_DIRTY_DATASYNC	(1 << 1)
+#define I_DIRTY_PAGES		(1 << 2)
+#define __I_NEW			3
+#define I_NEW			(1 << __I_NEW)
+#define I_WILL_FREE		(1 << 4)
+#define I_FREEING		(1 << 5)
+#define I_REFERENCED		(1 << 8)
+#define I_DIRTY_TIME		(1 << 11)
+#define __I_DIRTY_TIME_EXPIRED	12
+#define I_DIRTY_TIME_EXPIRED	(1 << __I_DIRTY_TIME_EXPIRED)
+#define I_CREATING		(1 << 15)
+
+#define I_DIRTY_INODE (I_DIRTY_SYNC | I_DIRTY_DATASYNC)
+#define I_DIRTY (I_DIRTY_INODE | I_DIRTY_PAGES)
+#define I_DIRTY_ALL (I_DIRTY | I_DIRTY_TIME)
+
+#define I_BAD			(1U << 31)
+
+struct inode;
+
+void clear_inode(struct inode *inode);
+void __mark_inode_dirty(struct inode *inode, unsigned flags);
+void mark_inode_dirty(struct inode *inode);
+void mark_inode_dirty_sync(struct inode *inode);
+
+#endif /* !TUX3_WRITEBACK_H */
