@@ -1,7 +1,7 @@
-# tux3-standalone
+# mkfs.tux3
 
 Standalone userspace Tux3 image builder extracted from the `origin/hirofumi-user`
-branch of the Linux Tux3 tree.
+branch of the Linux Tux3 tree. Uses 2015.06.01 disk format.
 
 ## Build
 
